@@ -243,9 +243,6 @@ class App:
         elif pyxel.btnp(pyxel.KEY_RIGHT):
             self.snake.change_direction(Dir.RIGHT)
 
-        if pyxel.btnp(pyxel.KEY_SPACE):
-            self.snake.grow(color=pyxel.rndi(1,16))
-
     def _check_nibble_collision(self):
         head = self.snake.body[0]
         for n in self.nibbles:

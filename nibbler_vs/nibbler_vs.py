@@ -28,10 +28,10 @@ class Snake:
     size = BLOCK_SIZE
 
     def __init__(self, x: int, y: int, dir: Dir):
-       self.body = []
-       self.body.append(
-           SnakeSegment(x, y, dir, pyxel.rndi(1,16))
-       )
+        self.body = []
+        self.body.append(
+            SnakeSegment(x, y, dir, pyxel.rndi(1,16))
+        )
 
     def change_direction(self, dir: Dir):
         if (self.body[0].dir.value + dir.value) % 2 != 0 \
@@ -167,8 +167,10 @@ class App:
         if pyxel.btnp(pyxel.KEY_R) or pyxel.btnp(pyxel.KEY_RETURN):
             self.reset()
         if self.state == GameState.SPLASH:
-            if pyxel.btnp(pyxel.KEY_UP) or pyxel.btnp(pyxel.KEY_DOWN) or pyxel.btnp(pyxel.KEY_RIGHT) or pyxel.btnp(pyxel.KEY_LEFT) \
-              or pyxel.btnp(pyxel.KEY_W) or pyxel.btnp(pyxel.KEY_S) or pyxel.btnp(pyxel.KEY_D) or pyxel.btnp(pyxel.KEY_A):
+            if pyxel.btnp(pyxel.KEY_UP) or pyxel.btnp(pyxel.KEY_DOWN) or \
+                pyxel.btnp(pyxel.KEY_RIGHT) or pyxel.btnp(pyxel.KEY_LEFT) or \
+                pyxel.btnp(pyxel.KEY_W) or pyxel.btnp(pyxel.KEY_S) or \
+                pyxel.btnp(pyxel.KEY_D) or pyxel.btnp(pyxel.KEY_A):
                 self.state = GameState.RUNNING
     
     def _check_snake_controls(self):
@@ -241,21 +243,17 @@ class App:
             return
 
         pyxel.cls(0)
-        self.snake1.draw()
-        self.snake2.draw()
         for n in self.nibbles:
             pyxel.circ(n.x+2, n.y+2, 1, n.color)
-            # pyxel.pal(2, n.color)
-            # pyxel.blt(n.x, n.y, 0, 10, 0, 5 * n.i, 5, 10)
-            # pyxel.pal()
-            # pyxel.circ(n.x+2, n.y+2, 2, n.color)
-            # pyxel.circ(n.x+2, n.y+2, 1, (n.color + 1) % 16)
 
         if self.state == GameState.SPLASH:
-            pyxel.blt(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2 - 10, 0, 16, 0, 33,15, 13, 0, 2)
+            pyxel.blt(SCREEN_WIDTH // 2 + 3, SCREEN_HEIGHT // 2 - 10, 0, 17, 1, 31, 13, 13, 0, 2)
             pyxel.text(SCREEN_WIDTH // 2 - 10, SCREEN_HEIGHT // 2 - 10, "Nibbler", 2)
             pyxel.text(SCREEN_WIDTH // 2 - 55, SCREEN_HEIGHT // 2, "Press any Arrow Key to Start", 7)
             pyxel.text(SCREEN_WIDTH // 2 - 55, SCREEN_HEIGHT // 2 + 15, "Player 1: WASD", self.snake1.body[0].col)
             pyxel.text(SCREEN_WIDTH // 2 - 15, SCREEN_HEIGHT // 2 + 25, "Player 2: Arrow Keys", self.snake2.body[0].col)
+
+        self.snake1.draw()
+        self.snake2.draw()
         
 App()

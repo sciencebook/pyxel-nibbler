@@ -22,7 +22,7 @@ There is no way to win this game.
 
 ### Nibbler VS
 
-https://kitao.github.io/pyxel/web/launcher/?run=sciencebook.pyxel-nibbler.nibbler-vs.nibbler-vs
+https://kitao.github.io/pyxel/web/launcher/?run=sciencebook.pyxel-nibbler.nibbler_vs.nibbler_vs
 
 A two-player version of the same snake game for head to head nibbling.
 
